@@ -1,7 +1,11 @@
 package practice.tacocloud;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.hamcrest.Matchers.containsString;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +25,8 @@ public class HomeControllerTests {
 	@Test
 	public void testHomePage() throws Exception {
 		mockMvc.perform(get("/"))
-		.andExpect (status().isOk())
-		.andExpect (view().name("home"))
+		.andExpect(status().isOk())
+		.andExpect(view().name("home"))
 		.andExpect(content().string(containsString("Welcome to...")));
 		
 	}

@@ -1,33 +1,40 @@
 package battleship;
 
+import java.util.ArrayList;
 
 public class SimpleDotCom {
 	
 	int[] locationCells;
 	int numOfHits = 0;
-
-	
 		
-		public void setLocationCells(int[] locs) {
-			locationCells = locs;
-		}
+	private  ArrayList<String> locationCells;
+	
+	
+	
+			locationCells = loc;
+		
 		public String checkYourself(String stringGuess) {
 		
 		int guess = Integer.parseInt(stringGuess); //convert the string to an int
 		String result = "miss"; //make a variable to hold the result for return, miss is default
-		
-		for (int cell : locationCells) {
-			if (guess == cell) {
-				result = "hit";
-				numOfHits++;
-				break;
-			}
+		int index = locationCells.indexOf(userInput);
+		if (index>=0) {
+			locationCells.remove(index);
+			if (locationCells.isEmpty()) {
+//		for (int cell : locationCells) {  //repeat with each cell in the location cells array
+//			if (guess == cell) { //compare user guess to this element in array
+//				result = "hit";
+//				numOfHits++;
+//				break;
+//			}
+			
 		}
+		
 		
 		if (numOfHits == locationCells.length) {
-			result = "kill";
+			result = "kill"; //checks to see if we hit 3 times and got a kill
 		}
-		System.out.println(result);
+		System.out.println(result); //display result
 		return result;
 	}
 
